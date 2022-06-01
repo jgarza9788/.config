@@ -11,6 +11,6 @@ start spotify
 # Start-Sleep -Seconds 1.0
 # $wshell.SendKeys('%{TAB}')
 
-# C:\Users\JGarza\misc_programs\spt.exe -play
+C:\Users\JGarza\misc_programs\spt.exe 
 
-spt -play 
+# spt -play 

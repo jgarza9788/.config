@@ -16,3 +16,5 @@ currently using oh-my-posh, but starship is faster...so i might be switching
 ```powershell
  Invoke-Expression (&starship init powershell)
 ```
+
+## the main powershell

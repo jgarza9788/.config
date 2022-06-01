@@ -1,38 +1,175 @@
-
-# os.setenv('STARSHIP_CONFIG', 'C:\\Users\\user\\jgarza\\.config\\powershell\\starship.toml')
 # ~/.config/starship.toml
 
 
-# Don't print a new line at the start of the prompt
-add_newline = true
 
-# makes prompt a single line
-[line_break]
-disabled = false
+# [](fg:#98E024)\
+# [  ](bg:#98E024 fg:#0C0C0C)\
+# [](fg:#98E024)\
 
-# Disable the package module, hiding it from the prompt completely
-[package]
-disabled = true
+# [](#9A348E)\
+# [](bg:#9A348E)\
+# [](bg:#DA627D fg:#9A348E)\
+# $directory\
+# [](fg:#DA627D bg:#FCA17D)\
+# $git_branch\
+# $git_status\
+# [](fg:#FCA17D bg:#86BBD8 fg:#0C0C0C)\
+# $c\
+# $elixir\
+# $elm\
+# $golang\
+# $haskell\
+# $java\
+# $julia\
+# $nodejs\
+# $nim\
+# $rust\
+# [](fg:#86BBD8 bg:#06969A)\
+# $docker_context\
+# [](fg:#06969A bg:#33658A)\
+# $time\
+# [ ](fg:#33658A)\
 
-[cmd_duration]
-min_time = 10_000  # Show command duration over 10,000 milliseconds (= 10 sec)
-format = "took [$duration]($style)"
 
-[character]
-error_symbol = "[X](bold red) "
+format = """
+$status
+[](fg:#F4005F)\
+[  ](bg:#F4005F fg:#0C0C0C)\
+[](bg:#98E024 fg:#F4005F)\
+$directory\
+[](bg:#FD971F fg:#98E024)\
+$git_branch\
+$git_status\
+[](fg:#FD971F bg:#58D1EB)\
+$c\
+$elixir\
+$elm\
+$golang\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$python\
+[](fg:#58D1EB bg:#06969A)\
+$docker_context\
+[](fg:#06969A bg:#33658A)\
+$time\
+[ ](fg:#33658A)\
+"""
 
-# git_branch 
-[git_branch ]
-symbol = "\ue702 "
+# Disable the blank line at the start of the prompt
+# add_newline = false
 
-# python
+# You can also replace your username with a neat symbol like  to save some space
+[username]
+show_always = true
+style_user = "bg:#9A348E"
+style_root = "bg:#9A348E"
+format = '[$user ]($style)'
+
+
+[directory]
+style = "bg:#98E024 fg:#0C0C0C"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = "  "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important  " = "  "
+
+[c]
+symbol = " "
+style = "bg:#86BBD8 fg:#0C0C0C"
+format = '[[ $symbol ($version) ](bg:#86BBD8 fg:#0C0C0C)]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:#06969A"
+format = '[[ $symbol $context ](bg:#06969A)]($style) $path'
+
+[elixir]
+symbol = " "
+style = "bg:#86BBD8 fg:#0C0C0C"
+format = '[[ $symbol ($version) ](bg:#86BBD8 fg:#0C0C0C)]($style)'
+
+[elm]
+symbol = " "
+style = "bg:#86BBD8 fg:#0C0C0C"
+format = '[[ $symbol ($version) ](bg:#86BBD8 fg:#0C0C0C)]($style)'
+
+[git_branch]
+symbol = ""
+style = "bg:#FD971F fg:#0C0C0C"
+format = '[[ $symbol $branch ](bold bg:#FD971F fg:#0C0C0C)]($style)'
+
+[git_status]
+style = "bg:#FD971F fg:#0C0C0C"
+format = '[[($all_status$ahead_behind )](bg:#FD971F fg:#0C0C0C)]($style)'
+
+[golang]
+symbol = " "
+style = "bg:#86BBD8 fg:#0C0C0C"
+format = '[[ $symbol ($version) ](bg:#86BBD8 fg:#0C0C0C)]($style)'
+
+[haskell]
+symbol = " "
+style = "bg:#86BBD8 fg:#0C0C0C"
+format = '[[ $symbol ($version) ](bg:#86BBD8 fg:#0C0C0C)]($style)'
+
+[java]
+symbol = " "
+style = "bg:#86BBD8 fg:#0C0C0C"
+format = '[[ $symbol ($version) ](bg:#86BBD8 fg:#0C0C0C)]($style)'
+
+[julia]
+symbol = " "
+style = "bg:#86BBD8 fg:#0C0C0C"
+format = '[[ $symbol ($version) ](bg:#86BBD8 fg:#0C0C0C)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#86BBD8 fg:#0C0C0C"
+format = '[[ $symbol ($version) ](bg:#86BBD8 fg:#0C0C0C)]($style)'
+
+[nim]
+symbol = " "
+style = "bg:#86BBD8 fg:#0C0C0C"
+format = '[[ $symbol ($version) ](bg:#86BBD8 fg:#0C0C0C)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#86BBD8 fg:#0C0C0C"
+format = '[[ $symbol ($version) ](bg:#86BBD8 fg:#0C0C0C)]($style)'
+
+# [time]
+# disabled = false
+# time_format = "%R" # Hour:Minute Format
+# style = "bg:#33658A"
+# format = '[[ ♥ $time ](bg:#33658A)]($style)'
+
 [python]
-# symbol = "\ue235 "
+symbol = ""
+style = "bg:#86BBD8 fg:#0C0C0C"
+# format = '[[ $symbol ($version)  $pyenv_prefix](bg:#86BBD8 fg:#0C0C0C)]($style)'
+format = '[${symbol} ${pyenv_prefix} ${version} ${virtualenv} ]($style)'
 
 
 # Clear visibility for exit codes
 [status]
-style = "bg:red"
-symbol = "\uf1e2 "
-format = '[\[$symbol$status\]]($style) '
+#style = "bg:#625E4C"
+symbol = "👎👎👎"
+success_symbol = "👍👍👍"
+format = '[[ $symbol ](bg:#263238)](fg:#263238) '
 disabled = false
