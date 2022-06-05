@@ -1,0 +1,1 @@
+python "C:\Users\JGarza\GitHub\VacasaAlert\VacasaData.py"
