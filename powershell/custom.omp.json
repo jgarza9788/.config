@@ -33,7 +33,7 @@
             "newline": true,
             "segments": [
                 {
-                "background": "#000000",
+                "background": "#0C0C0C",
                 "foreground": "#66e7ff",
                 "leading_diamond": "\ue0c5",
                 "properties": {
@@ -70,6 +70,9 @@
                 // "powerline_symbol": "\ue0c8", //rip
                 "foreground": "#0C0C0C",
                 "background": "#98E024",
+
+                // "foreground": "#98E024",
+                // "background": "#0C0C0C",
                 "properties": {
                     // "style": "folder",
                     "folder_icon": "\ue5ff",
@@ -96,7 +99,7 @@
                     "branch_icon": ""
                 },
                 "leading_diamond": "\ue0b6",
-                "trailing_diamond": "\ue0b4",
+                "trailing_diamond": "\ue0b4 ",
                 "style": "diamond",
                 // "template": " \uF408 git({{ .HEAD }}) ",
                 "template": "\ue702 {{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
@@ -107,7 +110,7 @@
                 "type": "python",
                 "style": "diamond",
                 "leading_diamond": "\ue0b6",
-                "trailing_diamond": "\ue0b4",
+                "trailing_diamond": "\ue0b4 ",
                 "foreground": "#100e23",
                 "background": "#56c2d6",
                 "display_mode": "context",
