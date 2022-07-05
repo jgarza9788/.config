@@ -31,6 +31,12 @@ Function pyRoboCopy_function
     python.exe C:\Users\JGarza\GitHub\PyRoboCopy\dearpygui_version\pyRoboCopy.py
 }
 
+# Get-ChildItem -Recurse | Select-Object -ExpandProperty Fullname | Out-File files.txt
+Function files.txt_function
+{
+    cmd /u /c "dir /s /b >files.txt"
+}
+
 # Alias
 Set-Alias run start
 Set-Alias open start
@@ -39,15 +45,16 @@ Set-Alias g git
 Set-Alias grep findstr
 Set-Alias tig 'C:\Program Files\Git\usr\bin\tig.exe'
 Set-Alias less 'C:\Program Files\Git\usr\bin\less.exe'
-Set-Alias -Name vacasa -Value 'vacasa_function' 
+Set-Alias -Name vacasa -Value 'vacasa_function'
 Set-Alias PyRoboCopy 'pyRoboCopy_function'
 Set-Alias dsc 'C:\Users\JGarza\.config\powershell\disable_services_cleaner.ps1'
 Set-Alias start_python 'conda init powershell -q'
+Set-Alias files.txt 'files.txt_function'
 
 # Set-Alias -Name spt -Value spotify-thing -Description "runs spotify"
 
 # hide dot folders in home folder
-# ATTRIB +H /d C:\User\JGarza\.*
+# ATTRIB +H /d C:\Users\JGarza\.*
 
 # conda + powershell
 # powershell -ExecutionPolicy ByPass -NoExit -Command "& 'C:\Users\JGarza\miniconda3\shell\condabin\conda-hook.ps1' ; conda activate 'C:\Users\JGarza\miniconda3\'"
@@ -57,6 +64,4 @@ Set-Alias start_python 'conda init powershell -q'
 # cd C:\users\JGarza\github\
 
 # clear before showing
-clear
-
-
+Clear-Host
