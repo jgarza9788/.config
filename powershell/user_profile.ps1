@@ -1,7 +1,7 @@
 #https://github.com/craftzdog/dotfiles-public/blob/master/.config/powershell/user_profile.ps1
 
 
-#mh-my-posh theme
+#oh-my-posh theme
 $theme_config = Join-Path $env:USERPROFILE ".config\powershell\custom.omp.json"
 oh-my-posh --init --shell pwsh --config $theme_config | Invoke-Expression
 

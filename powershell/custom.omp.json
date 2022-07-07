@@ -13,7 +13,7 @@
                             "{{ if gt .Code 0 }}#ff0015{{ end }}"
                         ],
                         "foreground": "#ffffff",
-                        "leading_diamond": "\ue0c7",
+                        "leading_diamond": "\ue0c5",
                         "properties": {
                             "always_enabled": true
                         },
@@ -21,7 +21,7 @@
                         // "template": " {{ if gt .Code 0 }}\uf00d {{ .Meaning }}{{ else }}\uf42e{{ end }} ",
                         // "template": " {{ if gt .Code 0 }}\uf00d 🤬{{ else }}\uf42e 🤩{{ end }} ",
                         "template": " {{ if gt .Code 0 }} \uf00d \uf00d \uf00d {{ else }} \uf42e \uf42e \uf42e {{ end }} ",
-                        "trailing_diamond": "\ue0c6 \n",
+                        "trailing_diamond": "\ue0c4 \n",
                         "type": "exit"
     
                 }
@@ -66,7 +66,7 @@
                 {
                 "type": "path",
                 "style": "powerline",
-                "powerline_symbol": "\ue0c6",  //digital
+                "powerline_symbol": "\ue0c4",  //digital
                 // "powerline_symbol": "\ue0c8", //rip
                 "foreground": "#0C0C0C",
                 "background": "#98E024",
@@ -111,7 +111,7 @@
                 "style": "diamond",
                 "leading_diamond": "\ue0b6",
                 "trailing_diamond": "\ue0b4 ",
-                "foreground": "#100e23",
+                "foreground": "#0C0C0C",
                 "background": "#56c2d6",
                 "display_mode": "context",
                 "template": "\ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} "
