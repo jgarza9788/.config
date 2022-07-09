@@ -13,7 +13,8 @@
                             "{{ if gt .Code 0 }}#ff0015{{ end }}"
                         ],
                         "foreground": "#ffffff",
-                        "leading_diamond": "\ue0c5",
+                        // "leading_diamond": "\ue0c5",
+                        "leading_diamond": "\ue0ba",
                         "properties": {
                             "always_enabled": true
                         },
@@ -21,7 +22,8 @@
                         // "template": " {{ if gt .Code 0 }}\uf00d {{ .Meaning }}{{ else }}\uf42e{{ end }} ",
                         // "template": " {{ if gt .Code 0 }}\uf00d 🤬{{ else }}\uf42e 🤩{{ end }} ",
                         "template": " {{ if gt .Code 0 }} \uf00d \uf00d \uf00d {{ else }} \uf42e \uf42e \uf42e {{ end }} ",
-                        "trailing_diamond": "\ue0c4 \n",
+                        // "trailing_diamond": "\ue0c4 \n",
+                        "trailing_diamond": "\ue0bc \n",
                         "type": "exit"
     
                 }
@@ -37,7 +39,8 @@
                 "foreground": "#66e7ff",
                 "leading_diamond": "\ue0c5",
                 "properties": {
-                    "macos": "mac"
+                    "macos": "mac",
+                    "windows": "\uf17a"
                 },
                 "style": "diamond",
                 "template": "  {{ if .WSL }}WSL at {{ end }}{{.Icon}}  ",
