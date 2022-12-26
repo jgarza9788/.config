@@ -1,5 +1,5 @@
 {
-    "lastUpdate":  "2022-07-27T02:01:45.3107552-04:00",
-    "SCOOP_REPO":  "https://github.com/ScoopInstaller/Scoop",
-    "SCOOP_BRANCH":  "master"
+  "last_update": "2022-11-24T21:47:40.0400480-05:00",
+  "scoop_branch": "master",
+  "scoop_repo": "https://github.com/ScoopInstaller/Scoop"
 }

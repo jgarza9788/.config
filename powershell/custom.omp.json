@@ -36,7 +36,7 @@
             "segments": [
                 {
                 "background": "#0C0C0C",
-                "foreground": "#66e7ff",
+                "foreground": "#66d9ef",
                 "leading_diamond": "\ue0c5",
                 "properties": {
                     "macos": "mac",
@@ -108,17 +108,24 @@
                 "template": "\ue702 {{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
                 "type": "git"
                 }
-                ,
-                {
+                
+                ,{
                 "type": "python",
                 "style": "diamond",
                 "leading_diamond": "\ue0b6",
                 "trailing_diamond": "\ue0b4 ",
                 "foreground": "#0C0C0C",
-                "background": "#56c2d6",
-                "display_mode": "context",
-                "template": "\ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} "
+                "background": "#66d9ef",
+                "properties": {
+                    "home_enabled": false,
+                    "fetch_virtual_env": false,
+                    "display_default": false,
+                    "display_mode": "files"
+                },
+                "template": "\ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Major }}.{{ .Minor }}{{ end }} "
                 }
+                
+                
         ],
         "type":"prompt"
     },

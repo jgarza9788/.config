@@ -18,3 +18,5 @@ currently using oh-my-posh, but starship is faster...so i might be switching
 ```
 
 ## the main powershell
+
+

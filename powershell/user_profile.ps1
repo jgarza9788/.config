@@ -1,11 +1,11 @@
 #https://github.com/craftzdog/dotfiles-public/blob/master/.config/powershell/user_profile.ps1
 
 
-#oh-my-posh theme
+# oh-my-posh theme
 $theme_config = Join-Path $env:USERPROFILE ".config\powershell\custom.omp.json"
 oh-my-posh --init --shell pwsh --config $theme_config | Invoke-Expression
 
-# or use starship
+# # or use starship
 # Invoke-Expression (&starship init powershell)
 
 # icons in terminal
@@ -50,6 +50,9 @@ Set-Alias PyRoboCopy 'pyRoboCopy_function'
 Set-Alias dsc 'C:\Users\JGarza\.config\powershell\disable_services_cleaner.ps1'
 Set-Alias start_python 'conda init powershell -q'
 Set-Alias files.txt 'files.txt_function'
+Set-Alias subl 'C:\Program Files\Sublime Text\subl.exe'
+Set-Alias smerge 'C:\Program Files\Sublime Merge\smerge.exe'
+# Set-Alias nvim 'nvim -u C:\Users\JGarza\.config\neovim\init.vim '
 
 # Set-Alias -Name spt -Value spotify-thing -Description "runs spotify"
 
@@ -62,6 +65,8 @@ Set-Alias files.txt 'files.txt_function'
 
 #  cd to folder
 # cd C:\users\JGarza\github\
+
+# $env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 
 # clear before showing
 Clear-Host
