@@ -6,17 +6,28 @@ Function files.txt_function
     cmd /u /c "dir /s /b >files.txt"
 }
 
+function ezsearch {
+    param (
+        [string]$SearchString
+    )
+
+    $SearchString = "*$SearchString*"
+
+    Get-ChildItem -s -Filter $SearchString | Select-Object -Property FullName
+}
+
 
 # Alias
 Set-Alias -Name run -Value start
 Set-Alias -Name open -Value start
+# Set-Alias -Name start -Value start
 Set-Alias -Name ll -Value Get-ChildItem
 Set-Alias -Name g -Value git
 Set-Alias -Name grep -Value findstr
 Set-Alias -Name tig -Value 'C:\Program Files\Git\usr\bin\tig.exe'
 Set-Alias -Name less -Value 'C:\Program Files\Git\usr\bin\less.exe'
 Set-Alias -Name files.txt -Value 'files.txt_function'
-
+New-Alias -Name EZS -Value ezsearch
 
 #  cd to folder
 # cd C:\users\JGarza\github\
