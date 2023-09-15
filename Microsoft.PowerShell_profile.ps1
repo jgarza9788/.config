@@ -17,6 +17,29 @@ function ezsearch {
 }
 
 
+function TBP_search {
+    param (
+        [string]$SearchString,
+        [string]$subfolder="",
+        [bool]$FileOnly=$true
+    )
+
+    Write-Host "**this will take a moment**"
+
+    $SearchString = "*$SearchString*"
+
+    if ($FileOnly)
+    {
+        Get-ChildItem -Path "\\Theblackpearl\d\Torrents\$subfolder" -s -File -Filter $SearchString | Select-Object -Property FullName
+    }
+    else
+    {
+        Get-ChildItem -Path "\\Theblackpearl\d\Torrents\$subfolder" -s -Filter $SearchString | Select-Object -Property FullName
+    }
+        
+}
+
+
 # Alias
 Set-Alias -Name run -Value start
 Set-Alias -Name open -Value start
@@ -27,7 +50,8 @@ Set-Alias -Name grep -Value findstr
 Set-Alias -Name tig -Value 'C:\Program Files\Git\usr\bin\tig.exe'
 Set-Alias -Name less -Value 'C:\Program Files\Git\usr\bin\less.exe'
 Set-Alias -Name files.txt -Value 'files.txt_function'
-New-Alias -Name EZS -Value ezsearch
+Set-Alias -Name EZS -Value ezsearch
+Set-Alias -Name TBP -Value TBP_search
 
 #  cd to folder
 # cd C:\users\JGarza\github\
