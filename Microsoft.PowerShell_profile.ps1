@@ -52,6 +52,7 @@ Set-Alias -Name less -Value 'C:\Program Files\Git\usr\bin\less.exe'
 Set-Alias -Name files.txt -Value 'files.txt_function'
 Set-Alias -Name EZS -Value ezsearch
 Set-Alias -Name TBP -Value TBP_search
+Set-Alias -Name winfetch -Value 'C:\tools\winfetch\winfetch.ps1'
 
 #  cd to folder
 # cd C:\users\JGarza\github\
@@ -65,4 +66,22 @@ Set-Alias -Name TBP -Value TBP_search
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
+}Import-Module PSReadLine
+Set-PSReadLineKeyHandler -Chord Tab -Function MenuComplete
+$scriptblock = {
+    param($wordToComplete, $commandAst, $cursorPosition)
+    $Env:_YABUS_TYPER.PY_COMPLETE = "complete_powershell"
+    $Env:_TYPER_COMPLETE_ARGS = $commandAst.ToString()
+    $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = $wordToComplete
+    YABUS_typer.py | ForEach-Object {
+        $commandArray = $_ -Split ":::"
+        $command = $commandArray[0]
+        $helpString = $commandArray[1]
+        [System.Management.Automation.CompletionResult]::new(
+            $command, $command, 'ParameterValue', $helpString)
+    }
+    $Env:_YABUS_TYPER.PY_COMPLETE = ""
+    $Env:_TYPER_COMPLETE_ARGS = ""
+    $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = ""
 }
+Register-ArgumentCompleter -Native -CommandName YABUS_typer.py -ScriptBlock $scriptblock
