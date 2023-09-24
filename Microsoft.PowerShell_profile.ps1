@@ -54,6 +54,7 @@ Set-Alias -Name EZS -Value ezsearch
 Set-Alias -Name TBP -Value TBP_search
 Set-Alias -Name winfetch -Value 'C:\tools\winfetch\winfetch.ps1'
 
+
 #  cd to folder
 # cd C:\users\JGarza\github\
 
