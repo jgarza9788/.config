@@ -1,6 +1,10 @@
 C:\Users\JGarza\GitHub\.config\powershell\user_profile.ps1
 
 
+# never truncate -- but the buffer might be too large
+# $Host.UI.RawUI.BufferSize = New-Object Management.Automation.Host.Size(9999, 9999)
+$Host.UI.RawUI.BufferSize = New-Object Management.Automation.Host.Size(1200, 1200)
+
 Function files.txt_function
 {
     cmd /u /c "dir /s /b >files.txt"
@@ -16,6 +20,13 @@ function ezsearch {
     Get-ChildItem -s -Filter $SearchString | Select-Object -Property FullName
 }
 
+function RegexFileSearch {
+    param (
+        [string]$SearchString
+    )
+
+    Get-ChildItem -s | Where-Object { $_.Name -match $SearchString } | Select-Object -Property FullName
+}
 
 function TBP_search {
     param (
@@ -51,8 +62,12 @@ Set-Alias -Name tig -Value 'C:\Program Files\Git\usr\bin\tig.exe'
 Set-Alias -Name less -Value 'C:\Program Files\Git\usr\bin\less.exe'
 Set-Alias -Name files.txt -Value 'files.txt_function'
 Set-Alias -Name EZS -Value ezsearch
+Set-Alias -Name RegExFS -Value RegexFileSearch
+Set-Alias -Name RFS -Value RegexFileSearch
+Set-Alias -Name REFS -Value RegexFileSearch
 Set-Alias -Name TBP -Value TBP_search
 Set-Alias -Name winfetch -Value 'C:\tools\winfetch\winfetch.ps1'
+Set-Alias -Name vi -Value 'C:\Program Files\Vim\vim90\vim.exe'
 
 
 #  cd to folder
