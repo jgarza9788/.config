@@ -10,46 +10,105 @@ Function files.txt_function
     cmd /u /c "dir /s /b >files.txt"
 }
 
-function ezsearch {
-    param (
-        [string]$SearchString
-    )
-
-    $SearchString = "*$SearchString*"
-
-    Get-ChildItem -s -Filter $SearchString | Select-Object -Property FullName
-}
 
 function RegexFileSearch {
     param (
         [string]$SearchString
     )
 
-    Get-ChildItem -s | Where-Object { $_.Name -match $SearchString } | Select-Object -Property FullName
+    $DIR = Get-Location
+    Write-Host "Searching folder: $DIR"
+    Write-Host "**this will take a moment**"
+
+    $files = Get-ChildItem -s | Where-Object { $_.Name -match $SearchString } 
+    
+
+    if ($files.Count -eq 0) 
+    {
+        Write-Host "No files found matching '$SearchString'."
+    } 
+    else 
+    {
+        Write-Host "Files found:"
+
+        for ($i = 0; $i -lt $files.Count; $i++) 
+        {
+            Write-Host "$i. $($files[$i].FullName.Replace($DIR,'󰉋'))"
+        }
+
+        $N = Read-Host "Open item (input number) or 'C' to cancel"
+
+        if ($N -eq 'C' -or $N -eq 'c') 
+        {
+            Write-Host "Operation canceled."
+        } 
+        elseif ($N -ge 0 -and $N -lt $files.Count) 
+        {
+            $picked_file = $files[$N]
+            $picked_file
+            Start-Process $picked_file.FullName  # Opens the chosen file
+        } 
+        else 
+        {
+            Write-Host "Invalid selection."
+        }
+    }
 }
+
 
 function TBP_search {
     param (
         [string]$SearchString,
-        [string]$subfolder="",
-        [bool]$FileOnly=$true
+        [string]$subfolder=""
     )
 
     Write-Host "**this will take a moment**"
 
-    $SearchString = "*$SearchString*"
+    $files = Get-ChildItem -Path "\\Theblackpearl\d\Torrents\$subfolder" -s -File | Where-Object { $_.Name -match $SearchString }
 
-    if ($FileOnly)
-    {
-        Get-ChildItem -Path "\\Theblackpearl\d\Torrents\$subfolder" -s -File -Filter $SearchString | Select-Object -Property FullName
-    }
-    else
-    {
-        Get-ChildItem -Path "\\Theblackpearl\d\Torrents\$subfolder" -s -Filter $SearchString | Select-Object -Property FullName
-    }
+    if ($files.Count -eq 0) {
+        Write-Host "No files found matching '$SearchString'."
+    } else {
+        Write-Host "Files found:"
         
+        for ($i = 0; $i -lt $files.Count; $i++) {
+            Write-Host "$i. $($files[$i].Name)"
+        }
+        
+        $N = Read-Host "Open item (input number) or 'C' to cancel"
+        
+        if ($N -eq 'C' -or $N -eq 'c') {
+            Write-Host "Operation canceled."
+        } elseif ($N -ge 0 -and $N -lt $files.Count) {
+            $picked_file = $files[$N]
+            $picked_file
+            Start-Process $picked_file.FullName  # Opens the chosen file
+        } else {
+            Write-Host "Invalid selection. Please enter a valid number or 'C' to cancel."
+        }
+    }
 }
 
+# function TBP_live_search {
+#     Write-Host "Live search is active. Start typing your search query."
+#    
+#     while ($true) {
+#         $searchString = Read-Host "Enter search query (press Enter to exit)"
+#        
+#         if ([string]::IsNullOrEmpty($searchString)) {
+#             Write-Host "Exiting live search."
+#             break
+#         }
+#        
+#         $files = Get-ChildItem -Path "\\Theblackpearl\d\Torrents\" -s -File | Where-Object { $_.Name -match $searchString }
+#        
+#         if ($files.Count -eq 0) {
+#             Write-Host "No files found matching '$searchString'."
+#         } else {
+#             $files | Select-Object -Property Name, Directory | Out-GridView
+#         }
+#     }
+# }
 
 # Alias
 Set-Alias -Name run -Value start
