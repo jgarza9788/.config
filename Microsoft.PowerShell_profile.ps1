@@ -1,9 +1,8 @@
 C:\Users\JGarza\GitHub\.config\powershell\user_profile.ps1
 
-
 # never truncate -- but the buffer might be too large
 # $Host.UI.RawUI.BufferSize = New-Object Management.Automation.Host.Size(9999, 9999)
-$Host.UI.RawUI.BufferSize = New-Object Management.Automation.Host.Size(1200, 1200)
+# $Host.UI.RawUI.BufferSize = New-Object Management.Automation.Host.Size(1200, 1200)
 
 Function files.txt_function
 {
@@ -110,6 +109,10 @@ function TBP_search {
 #     }
 # }
 
+function list-my-Aliases{
+    Get-Content $profile | findstr "Set-Alias"
+}
+
 # Alias
 Set-Alias -Name run -Value start
 Set-Alias -Name open -Value start
@@ -126,37 +129,43 @@ Set-Alias -Name RFS -Value RegexFileSearch
 Set-Alias -Name REFS -Value RegexFileSearch
 Set-Alias -Name TBP -Value TBP_search
 Set-Alias -Name winfetch -Value 'C:\tools\winfetch\winfetch.ps1'
+Set-Alias -Name vim -Value 'C:\Program Files\Vim\vim90\vim.exe'
 Set-Alias -Name vi -Value 'C:\Program Files\Vim\vim90\vim.exe'
+Set-Alias -Name mic -Value 'C:\tools\micro\micro.exe'
+Set-Alias -Name micro -Value 'C:\tools\micro\micro.exe'
+Set-Alias -Name lma -Value list-my-Aliases
 
+Set-Alias -Name matrix -Value 'C:\tools\rusty-rain.exe'
+Set-Alias -Name neo -Value 'C:\tools\rusty-rain.exe'
 
 #  cd to folder
 # cd C:\users\JGarza\github\
 
 
-# # Import the Chocolatey Profile that contains the necessary code to enable
-# # tab-completions to function for `choco`.
-# # Be aware that if you are missing these lines from your profile, tab completion
-# # for `choco` will not function.
-# # See https://ch0.co/tab-completion for details.
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
-  Import-Module "$ChocolateyProfile"
-}Import-Module PSReadLine
-Set-PSReadLineKeyHandler -Chord Tab -Function MenuComplete
-$scriptblock = {
-    param($wordToComplete, $commandAst, $cursorPosition)
-    $Env:_YABUS_TYPER.PY_COMPLETE = "complete_powershell"
-    $Env:_TYPER_COMPLETE_ARGS = $commandAst.ToString()
-    $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = $wordToComplete
-    YABUS_typer.py | ForEach-Object {
-        $commandArray = $_ -Split ":::"
-        $command = $commandArray[0]
-        $helpString = $commandArray[1]
-        [System.Management.Automation.CompletionResult]::new(
-            $command, $command, 'ParameterValue', $helpString)
-    }
-    $Env:_YABUS_TYPER.PY_COMPLETE = ""
-    $Env:_TYPER_COMPLETE_ARGS = ""
-    $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = ""
-}
-Register-ArgumentCompleter -Native -CommandName YABUS_typer.py -ScriptBlock $scriptblock
+# # # Import the Chocolatey Profile that contains the necessary code to enable
+# # # tab-completions to function for `choco`.
+# # # Be aware that if you are missing these lines from your profile, tab completion
+# # # for `choco` will not function.
+# # # See https://ch0.co/tab-completion for details.
+# $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+# if (Test-Path($ChocolateyProfile)) {
+#   Import-Module "$ChocolateyProfile"
+# }Import-Module PSReadLine
+# Set-PSReadLineKeyHandler -Chord Tab -Function MenuComplete
+# $scriptblock = {
+#     param($wordToComplete, $commandAst, $cursorPosition)
+#     $Env:_YABUS_TYPER.PY_COMPLETE = "complete_powershell"
+#     $Env:_TYPER_COMPLETE_ARGS = $commandAst.ToString()
+#     $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = $wordToComplete
+#     YABUS_typer.py | ForEach-Object {
+#         $commandArray = $_ -Split ":::"
+#         $command = $commandArray[0]
+#         $helpString = $commandArray[1]
+#         [System.Management.Automation.CompletionResult]::new(
+#             $command, $command, 'ParameterValue', $helpString)
+#     }
+#     $Env:_YABUS_TYPER.PY_COMPLETE = ""
+#     $Env:_TYPER_COMPLETE_ARGS = ""
+#     $Env:_TYPER_COMPLETE_WORD_TO_COMPLETE = ""
+# }
+# Register-ArgumentCompleter -Native -CommandName YABUS_typer.py -ScriptBlock $scriptblock
