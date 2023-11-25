@@ -8,12 +8,11 @@
             "newline": true,
             "segments": [
                 {
-                        "background": "#02c4ff",
+                        "background": "#006EFF",
                         "background_templates": [
-                            "{{ if gt .Code 0 }}#ea00d9{{ end }}"
+                            "{{ if gt .Code 0 }}#ff0015{{ end }}"
                         ],
-                        // "foreground": "#ffffff",
-                        "foreground": "#000",
+                        "foreground": "#ffffff",
                         // "leading_diamond": "\ue0c5",
                         "leading_diamond": "\ue0ba",
                         "properties": {
@@ -22,18 +21,11 @@
                         "style": "diamond",
                         // "template": " {{ if gt .Code 0 }}\uf00d {{ .Meaning }}{{ else }}\uf42e{{ end }} ",
                         // "template": " {{ if gt .Code 0 }}\uf00d 🤬{{ else }}\uf42e 🤩{{ end }} ",
-                        // "template": " {{ if gt .Code 0 }} \uf00d \uf00d \uf00d {{ else }} \uf42e \uf42e \uf42e {{ end }} ",
-                        // "template": "{{ if gt .Code 0 }}󰔑{{ else }}󰔓{{ end }}",
-                        // "template": "{{ if gt .Code 0 }} 󰔑 󰔑 󰔑 {{ else }} 󰔓 󰔓 󰔓 {{ end }}",
-                        // "template": "{{ if gt .Code 0 }} 󰔑 󰔑 󰔑 {{ else }} \udb81\udd13 {{ end }}",
-                        // "template": " {{ if gt .Code 0 }} 󱚝 󱚝 󱚝 {{ else }} 󱚥 󱚥 󱚥 {{ end }} ",
-                        // "template": " {{ if gt .Code 0 }}    {{ else }} 󰈻 󰈻 󰈻 {{ end }} ",
-                        // "template": " {{ if gt .Code 0 }} ╰（‵□′）╯ {{ else }} ╰(*°▽°*)╯  {{ end }} ",
-                        "template": " {{ if gt .Code 0 }}    {{ else }}    {{ end }} ",
-                        // "template": " {{ if gt .Code 0 }}    {{ else }}    {{ end }} ",
+                        "template": " {{ if gt .Code 0 }} \uf00d \uf00d \uf00d {{ else }} \uf42e \uf42e \uf42e {{ end }} ",
                         // "trailing_diamond": "\ue0c4 \n",
                         "trailing_diamond": "\ue0bc \n",
                         "type": "exit"
+    
                 }
                 ],
             "type": "prompt"
@@ -43,9 +35,9 @@
             "newline": true,
             "segments": [
                 {
-                "background": "#000000",
-                "foreground": "#02c4ff",
-                "leading_diamond": "\ue0b6",
+                "background": "#0C0C0C",
+                "foreground": "#66d9ef",
+                "leading_diamond": "\ue0c5",
                 "properties": {
                     "macos": "mac",
                     "windows": "\uf17a"
@@ -77,16 +69,13 @@
                 {
                 "type": "path",
                 "style": "powerline",
-                "powerline_symbol": "\ue0b8",  //slaint
-                // "powerline_symbol": "\ue0c6",  //digital
-                // "powerline_symbol": "\ue0c8",  //digital
+                "powerline_symbol": "\ue0c4",  //digital
                 // "powerline_symbol": "\ue0c8", //rip
+                "foreground": "#0C0C0C",
+                "background": "#98E024",
 
-                "foreground": "#000000",
-                "background": "#14fe00",
-                // "foreground": "#14fe00",
-                // "background": "#000000",
-
+                // "foreground": "#98E024",
+                // "background": "#0C0C0C",
                 "properties": {
                     // "style": "folder",
                     "folder_icon": "\ue5ff",
@@ -107,23 +96,16 @@
             "newline": false,
             "segments": [
                 {
-                "background": "#ff5900",
-                "foreground": "#000000",
-                // "background": "#000000",
-                // "foreground": "#ff5900",
+                "background": "#fd971f",
+                "foreground": "#0C0C0C",
                 "properties": {
                     "branch_icon": ""
                 },
                 "leading_diamond": "\ue0b6",
                 "trailing_diamond": "\ue0b4 ",
-                // "leading_diamond": "\ue0b2",
-                // "trailing_diamond": "\ue0b0 ",
-
-
                 "style": "diamond",
                 // "template": " \uF408 git({{ .HEAD }}) ",
                 "template": "\ue702 {{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
-                // "template": "\ue708 {{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
                 "type": "git"
                 }
                 
@@ -132,21 +114,19 @@
                 "style": "diamond",
                 "leading_diamond": "\ue0b6",
                 "trailing_diamond": "\ue0b4 ",
-                // "leading_diamond": "\ue0b2",
-                // "trailing_diamond": "\ue0b0 ",
-                "foreground": "#000000",
-                // "background": "#14fe00",
-                "background": "#f4f501",
+                "foreground": "#0C0C0C",
+                "background": "#66d9ef",
                 "properties": {
                     "home_enabled": false,
-                    "fetch_virtual_env": true,
+                    "fetch_virtual_env": false,
                     "display_default": false,
                     "display_mode": "files"
-                    // "display_mode": "context"
                 },
-                // "template": "\ue235 {{ .Venv }}"
-                "template": "\ue235 {{ if .Venv }}{{ .Venv }}{{ else }}{{ .Full }}{{ end }}"
+                "template": "\ue235"
+                // "template": "\ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Major }}.{{ .Minor }}{{ end }} "
                 }
+                
+                
         ],
         "type":"prompt"
     },

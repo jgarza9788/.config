@@ -4,11 +4,12 @@ C:\Users\JGarza\GitHub\.config\powershell\user_profile.ps1
 # $Host.UI.RawUI.BufferSize = New-Object Management.Automation.Host.Size(9999, 9999)
 # $Host.UI.RawUI.BufferSize = New-Object Management.Automation.Host.Size(1200, 1200)
 
+
+
 Function files.txt_function
 {
     cmd /u /c "dir /s /b >files.txt"
 }
-
 
 function RegexFileSearch {
     param (
@@ -53,7 +54,6 @@ function RegexFileSearch {
         }
     }
 }
-
 
 function TBP_search {
     param (
@@ -109,6 +109,10 @@ function TBP_search {
 #     }
 # }
 
+function taskman{
+    Get-Process | Sort CPU -Descending | Select ProcessName, CPU, PM, WS, VM | Format-Table -AutoSize
+}
+
 function list-my-Aliases{
     Get-Content $profile | findstr "Set-Alias"
 }
@@ -134,9 +138,31 @@ Set-Alias -Name vi -Value 'C:\Program Files\Vim\vim90\vim.exe'
 Set-Alias -Name mic -Value 'C:\tools\micro\micro.exe'
 Set-Alias -Name micro -Value 'C:\tools\micro\micro.exe'
 Set-Alias -Name lma -Value list-my-Aliases
+Set-Alias -Name tm -Value taskman
+Set-Alias -Name tman -Value taskman
+Set-Alias -Name actpy -Value '.\env\Scripts\activate'
+Set-Alias -Name activate -Value '.\env\Scripts\activate'
+Set-Alias -Name env_activate -Value '.\env\Scripts\activate'
 
 Set-Alias -Name matrix -Value 'C:\tools\rusty-rain.exe'
 Set-Alias -Name neo -Value 'C:\tools\rusty-rain.exe'
+
+# this will map my YABUS_typer.py to be quickly accessible
+function fn_YABUS{
+    param(
+        [string[]]$Parameters
+    )
+    # Replace 'python_script.py' with the actual name of your Python script
+    # Join the parameters into a single string separated by spaces
+    $paramString = $Parameters -join ' '
+    python C:\Users\JGarza\GitHub\YABUS\YABUS_typer.py $paramString
+}
+Set-Alias -Name YABUS -Value fn_YABUS
+
+function fn_PwdMan{
+    python C:\Users\JGarza\GitHub\PwdMan\main.py 
+}
+Set-Alias -Name PwdMan -Value fn_PwdMan
 
 #  cd to folder
 # cd C:\users\JGarza\github\

@@ -17,6 +17,8 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory
 Add-Type -AssemblyName System.Windows.Forms
 [System.Windows.Forms.SendKeys]::SendWait("^r")
 
+$env:VIRTUAL_ENV_DISABLE_PROMPT = 1
+VIRTUAL_ENV_DISABLE_PROMPT=1 
 
 # # clear before showing
 Clear-Host
