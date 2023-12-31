@@ -149,13 +149,14 @@ Set-Alias -Name neo -Value 'C:\tools\rusty-rain.exe'
 
 # this will map my YABUS_typer.py to be quickly accessible
 function fn_YABUS{
-    param(
-        [string[]]$Parameters
-    )
-    # Replace 'python_script.py' with the actual name of your Python script
-    # Join the parameters into a single string separated by spaces
-    $paramString = $Parameters -join ' '
-    python C:\Users\JGarza\GitHub\YABUS\YABUS_typer.py $paramString
+    # param(
+    #     [string[]]$Parameters
+    # )
+    # # Replace 'python_script.py' with the actual name of your Python script
+    # # Join the parameters into a single string separated by spaces
+    # $paramString = $Parameters -join ' '
+    # python C:\Users\JGarza\GitHub\YABUS\YABUS_typer.py $paramString
+    Set-Location "C:\Users\JGarza\GitHub\YABUS"
 }
 Set-Alias -Name YABUS -Value fn_YABUS
 
